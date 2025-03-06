@@ -24,13 +24,13 @@ jobs:
         run: npm run build
 
       - name: List files in build folder
-        run: ls -la ./dist  # Verifikasi apakah build menghasilkan file yang benar
+        run: ls -la ./build  # Pastikan output build ada di ./build, bukan ./dist
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact  # Nama artifact yang digunakan untuk upload
-          path: ./build          # Pastikan path yang di-upload benar
+          path: ./build          # Pastikan folder yang di-upload adalah ./build
 
   deploy:
     needs: build
@@ -40,13 +40,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact  # Pastikan nama artifact konsisten
-          path: ./build
+          path: ./build         # Mengunduh artifact ke folder yang benar
 
-      - name: List files in dist folder
-        run: ls -la ./dist  # Verifikasi apakah artifact sudah didownload
+      - name: List files in build folder after download
+        run: ls -la ./build  # Verifikasi apakah artifact sudah didownload dengan benar
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: ./build  # Gunakan folder build untuk publish ke GitHub Pages
