@@ -23,9 +23,6 @@ jobs:
       - name: Build the app
         run: npm run build
 
-      - name: List files in build folder
-        run: ls -la ./build  # Pastikan output build ada di ./build, bukan ./dist
-
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
