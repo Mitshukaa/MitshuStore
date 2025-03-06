@@ -23,11 +23,14 @@ jobs:
       - name: Build the app
         run: npm run build
 
+      - name: List files in build folder
+        run: ls -la ./dist  # Verifikasi apakah build menghasilkan file yang benar
+
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifact  # Ganti nama artifact di sini
-          path: ./dist         # Pastikan path yang di-upload benar
+          name: build-artifact  # Nama artifact yang digunakan untuk upload
+          path: ./dist          # Pastikan path yang di-upload benar
 
   deploy:
     needs: build
@@ -36,8 +39,11 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: build-artifact  # Gunakan nama yang sama dengan upload artifact
+          name: build-artifact  # Pastikan nama artifact konsisten
           path: ./dist
+
+      - name: List files in dist folder
+        run: ls -la ./dist  # Verifikasi apakah artifact sudah didownload
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
