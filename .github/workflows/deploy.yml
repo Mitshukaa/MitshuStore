@@ -21,10 +21,10 @@ jobs:
         run: npm install
 
       - name: Build the app
-        run: npm run build  # Build dengan Vite, menghasilkan folder dist/
+        run: npm run build  # Build aplikasi menggunakan Vite
 
       - name: List files in dist folder
-        run: ls -la ./dist  # Verifikasi apakah build menghasilkan file yang benar
+        run: ls -la ./dist  # Verifikasi bahwa folder dist/ berisi file hasil build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v4
@@ -49,4 +49,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist  # Publish ke GitHub Pages dari folder dist/
+          publish_dir: ./dist  # Gunakan folder dist untuk deploy
