@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact  # Nama artifact yang digunakan untuk upload
-          path: ./dist          # Pastikan path yang di-upload benar
+          path: ./build          # Pastikan path yang di-upload benar
 
   deploy:
     needs: build
@@ -40,7 +40,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifact  # Pastikan nama artifact konsisten
-          path: ./dist
+          path: ./build
 
       - name: List files in dist folder
         run: ls -la ./dist  # Verifikasi apakah artifact sudah didownload
