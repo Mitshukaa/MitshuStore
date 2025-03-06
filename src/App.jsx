@@ -68,6 +68,7 @@ const MitshuStoreSPA = () => {
   );
 
   const [dropdownRaceOpen, setDropdownRaceOpen] = useState(false);
+  const [dropdownDracoOpen, setDropdownDracoOpen] = useState(false);
   const [dropdownBossOpen, setDropdownBossOpen] = useState(false);
   const [dropdownMasteryOpen, setDropdownMasteryOpen] = useState(false);
   const [dropdownUnlockraceOpen, setDropdownUnlockraceOpen] = useState(false);
@@ -77,6 +78,7 @@ const MitshuStoreSPA = () => {
   const [dropdownAccountOpen, setDropdownAccountOpen] = useState(false);
 
   const [selectedRace, setSelectedRace] = useState(null);
+  const [selectedDraco, setSelectedDraco] = useState(null);
   const [selectedBoss, setSelectedBoss] = useState(null);
   const [selectedMastery, setSelectedMastery] = useState(null);
   const [selectedUnlockrace, setSelectedUnlockrace] = useState(null);
@@ -106,14 +108,59 @@ const MitshuStoreSPA = () => {
       estimatedTime: "7-10 hari",
       link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20Trial%20Race%20V4",
     },
+
     {
       name: "Race V4 FULL GEAR",
       description: "Level 1500+",
-      price: "Rp35.000",
+      price: "Rp25.000",
       estimatedTime: "7-10 hari",
       link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20Race%20V4%20FULL%20GEAR",
     },
   ];
+
+  const dracos = [
+    {
+      name: "Mendapatkan 8 Belt",
+      price: "Rp20.000",
+      link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20Paket%20FOX%20LAMP",
+    },
+    {
+      name: "Unlock Race draco",
+      price: "Rp10.000",
+      link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20paket%20Gacha",
+    },
+    {
+      name: "Race V2&3 Draco",
+      price: "Rp7.000",
+      link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20paket%20Gacha",
+    },
+    {
+      name: "Unlock Dojo/Race draco v4",
+      price: "Rp28.000",
+      link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20paket%20Gacha",
+    },
+    {
+      name: "Trial Race V4 Draco",
+      price: "Rp12.000",
+      link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20paket%20Gacha",
+    },
+    {
+      name: "Full gear Race Draco T10",
+      price: "Rp35.000",
+      link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20paket%20Gacha",
+    },
+    {
+      name: "Volcano raid",
+      price: "Rp10.000",
+      link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20paket%20Gacha",
+    },
+    {
+      name: "Volcanic Magnet",
+      price: "Rp3.000",
+      link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20paket%20Gacha",
+    },
+  ];
+  
   
   const bosses = [
     {
@@ -192,13 +239,13 @@ const MitshuStoreSPA = () => {
     {
       name: "Bones",
       description: "Bones",
-      price: "Rp2.000",
+      price: "Rp1.000",
       link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20Bones",
     },
     {
       name: "Ectoplasm",
       description: "100 Ectoplasm",
-      price: "Rp1.000",
+      price: "Rp1.500",
       link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20100%20Ectoplasm",
     },
   ];
@@ -225,7 +272,7 @@ const MitshuStoreSPA = () => {
       link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20Rengoku",
     },
     {
-      name: "Wando, Shisui, Saddi",
+      name: "Oroshi, Shizu, Shaisi",
       price: "Rp3.000",
       link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20Wando,%20Shisui,%20Saddi%20PILIH:",
     },
@@ -234,7 +281,7 @@ const MitshuStoreSPA = () => {
   const kitsunes = [
     {
       name: "Paket dapet FOX LAMP",
-      price: "Rp25.000",
+      price: "Rp22.000",
       link: "https://wa.me/6285864474973?text=Halo%20saya%20ingin%20order%20Paket%20FOX%20LAMP",
     },
     {
@@ -284,6 +331,7 @@ const MitshuStoreSPA = () => {
   ];
 
   const toggleDropdownRace = () => setDropdownRaceOpen(!dropdownRaceOpen);
+  const toggleDropdownDraco = () => setDropdownDracoOpen(!dropdownDracoOpen);
   const toggleDropdownBoss = () => setDropdownBossOpen(!dropdownBossOpen);
   const toggleDropdownMastery = () => setDropdownMasteryOpen(!dropdownMasteryOpen);
   const toggleDropdownUnlockrace = () => setDropdownUnlockraceOpen(!dropdownUnlockraceOpen);
@@ -294,6 +342,11 @@ const MitshuStoreSPA = () => {
 
   const handleRaceSelect = (race) => {
     setSelectedRace(race);
+    setDropdownRaceOpen(false); // Fixed: Changed setDropdownOpen to setDropdownRaceOpen
+  };
+
+  const handleDracoSelect = (draco) => {
+    setSelectedRace(draco);
     setDropdownRaceOpen(false); // Fixed: Changed setDropdownOpen to setDropdownRaceOpen
   };
 
@@ -385,7 +438,7 @@ const MitshuStoreSPA = () => {
             className="w-full h-90 object-cover rounded-lg grayscale hover:grayscale-0 transition duration-300"
           />
           <p className="text-purple-400 text-2xl font-semibold mt-2">
-            Rp35.000
+            Rp40.000
           </p>
           <p className="text-gray-300 mt-4">
   <strong>WAJIB DIBACA SEBELUM MEMBELI</strong>
@@ -515,12 +568,12 @@ const MitshuStoreSPA = () => {
             className="w-full h-90 object-cover rounded-lg grayscale hover:grayscale-0 transition duration-300"
           />
           <p className="text-purple-400 text-2xl font-semibold mt-2">
-            Rp15.000
+            Rp30.000
           </p>
           <p className="text-gray-300 mt-4">
   <strong>WAJIB DIBACA SEBELUM MEMBELI</strong>
   <br /><br />
-  - Sudah Yama & Tushita(Sudah 350 Mastery)<br />
+  - Sudah include Yama & Tushita(Sudah 350 Mastery)<br />
   - Unlock all skill<br />
   - Tidak mengganti apa pun seperti aksesori, Fighting Style, dll.<br />
   - Aman, proses cepat, terpercaya<br />
@@ -911,7 +964,7 @@ const MitshuStoreSPA = () => {
         )}
       </div>
 
-      {/* Boss Section */}
+
       <div className="relative bg-gray-800/50 p-6 rounded-lg">
         <h4 className="text-lg font-bold text-center mb-2">Raid Boss</h4>
         <img
@@ -1026,6 +1079,69 @@ const MitshuStoreSPA = () => {
         {selectedKitsune && (
           <a
             href={selectedKitsune.link}
+            className="mt-4 block px-4 py-2 bg-purple-500 text-white rounded-lg text-center hover:bg-purple-600"
+          >
+            Pesan Sekarang
+          </a>
+        )}
+      </div>
+
+      <div className="relative bg-gray-800/50 p-6 rounded-lg">
+        <h4 className="text-lg font-bold text-center mb-2">Draco</h4>
+        <img
+          src="/MitshuStore/images/gachakitsune.jpg"
+          alt="Package Image"
+          className="w-full h-90 object-cover rounded-lg grayscale hover:grayscale-0 transition duration-300"
+        />
+        <p className="text-purple-400 text-2xl font-semibold mt-2">
+          {selectedDraco ? selectedDraco.price : "Pilih Paket"}
+        </p>
+        <p className="text-gray-300 mt-4">
+          <strong>WAJIB DIBACA SEBELUM MEMBELI</strong>
+          <br /><br />
+          - Paket gacha<br />
+          - Sistemnya Mendapatkan 25 Amber azure,lalu akan di gacha kan<br />
+          - Sudah Berlevel 1600 dan sudah di SEA 3
+          - Yang bisa di dapatkan:
+            Fragment 750
+            Kitsune Aura Color
+            Tailed Beast Title
+            Fox Lamp
+            Kitsune Mask
+            Kitsune Ribbon
+            Kitsune Fruit<br />
+            <br /><br />
+          - Paket FOX LAMP<br />
+          - Gratis unlock all skill<br />
+          - Tidak mengganti apa pun seperti aksesori, Fighting Style, dll.<br />
+          - Aman, proses cepat, terpercaya<br />
+          - Diproses sesuai antrian<br /><br />
+          Setelah pembelian selesai, silakan klik "Konfirmasi Pesanan Selesai"
+          dan beri rating ⭐⭐⭐⭐⭐<br /><br />
+          Selamat berbelanja & terima kasih!
+        </p>
+        <button 
+          onClick={toggleDropdownDraco} 
+          className="mt-4 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600"
+        >
+          {selectedDraco ? selectedDraco.name : "Pilih Paket"}
+        </button>
+        {dropdownDracoOpen && (
+          <div className="absolute bg-gray-700 mt-2 rounded-lg shadow-lg p-4 z-10">
+            {dracos.map((draco) => (
+              <button
+                key={draco.name}
+                onClick={() => handleDracoSelect(draco)}
+                className="block w-full text-left px-2 py-1 hover:bg-gray-600 rounded"
+              >
+                {draco.name}<br />{draco.price}
+              </button>
+            ))}
+          </div>
+        )}
+        {selectedDraco && (
+          <a
+            href={selectedDraco.link}
             className="mt-4 block px-4 py-2 bg-purple-500 text-white rounded-lg text-center hover:bg-purple-600"
           >
             Pesan Sekarang
